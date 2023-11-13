@@ -13,7 +13,7 @@ abstract class TFigure extends JPanel {
      */
     protected int x1, y1, x2, y2, x3, y3, x4, y4, r1, r2;
     protected boolean VISION = true;
-    protected int interfaceWidth = 1000, interfaceHeight = 500;
+    protected int interfaceWidth = 1100, interfaceHeight = 600;
 
 
     public TFigure(int x, int y) {

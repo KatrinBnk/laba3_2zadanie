@@ -216,8 +216,6 @@ public class Main {
             }
             cP.revalidate();
             cP.repaint();
-            k = 0;
-
             container = null;
             System.out.println("Фигуры стерты, а соответствующие объекты уничтожены");
         } else {
@@ -234,7 +232,6 @@ public class Main {
             }
             cP.revalidate();
             cP.repaint();
-            k = 0;
             System.out.println("Фигуры стерты, но объекты не уничтожены");
         }
         else {
@@ -777,32 +774,27 @@ public class Main {
             if (moveTags[i] == 0) {
                 if (container != null) {
                     ((TFigure) container[i]).MoveTo(dx, dy);
-                    for (int t = 0; t < k; t++) {
-                        cP.add(container[t], BorderLayout.CENTER);
-                    }
+                    cP.add(container[i], BorderLayout.CENTER);
+
                     cP.revalidate();
                     cP.repaint();
                 } else {
-                    JOptionPane.showMessageDialog(fNL, "Массив не создан");
+                    JOptionPane.showMessageDialog(fNL, "Контейнер не создан");
+                    break;
                 }
             }
             //перемещение окружностей
-            else  if (moveTags[0] == 1) {
+            else  if (moveTags[i] == 1) {
                 if (container != null) {
                     if (container[i] instanceof Circle) {
                         ((TFigure) container[i]).MoveTo(dx, dy);
+                        cP.add(container[i], BorderLayout.CENTER);
                     }
-
-                    for (int t = 0; t < k; t++) {
-                        if (container[t] instanceof Circle) {
-                            cP.add(container[t], BorderLayout.CENTER);
-                        }
-                    }
-
                     cP.revalidate();
                     cP.repaint();
                 } else {
-                    JOptionPane.showMessageDialog(fNL, "Массив не создан");
+                    JOptionPane.showMessageDialog(fNL, "Контейнер не создан");
+                    break;
                 }
             }
             //перемещение 4хугольников
@@ -810,22 +802,15 @@ public class Main {
                 if (container != null) {
                     if (container[i] instanceof Square) {
                             ((TFigure) container[i]).MoveTo(dx, dy);
-                    }
-
-                    for (int t = 0; t < k; t++) {
-                        if (container[t] instanceof Square) {
-                            cP.add(container[t], BorderLayout.CENTER);
-                        }
+                            cP.add(container[i], BorderLayout.CENTER);
                     }
                     cP.revalidate();
                     cP.repaint();
                 } else {
-                    JOptionPane.showMessageDialog(fNL, "Массив не создан");
+                    JOptionPane.showMessageDialog(fNL, "Контейнер не создан");
+                    break;
                 }
 
-            }
-            else {
-                JOptionPane.showMessageDialog(fNL, "Фигуры не найдены");
             }
             fNL.setFocusable(true);
             fNL.requestFocus();
