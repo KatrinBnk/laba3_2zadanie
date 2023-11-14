@@ -33,7 +33,7 @@ public class Romb extends Square {
                     x0 - w/2 <= 0 || y0 - h/2 <= 0);
         }
 
-        sets(x0, y0-h/2, x0 + w/2,y0, x0, y0+h/2, x0-w/2, y0);
+        sets(x0, y0-h/2, x0 + w/2,y0, x0, y0+h/2, x0-w/2, y0, true);
         System.out.println("Изменение размера объекта. (x0;y0) = (" + x0 + "; " + y0+"), (w; h) = (" + w + "; " + h + ")");
     }
 }

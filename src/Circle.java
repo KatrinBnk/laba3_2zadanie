@@ -71,11 +71,13 @@ public class Circle extends TFigure {
     }
 
     //изменение диаметра ТОЛЬКО для окружности
-    protected void chengeR(int R) {
-        if (super.getPointX() - R >= 0 && super.getPointX() + R <= interfaceWidth && super.getPointY() - R >= 0 && super.getPointY() + R <= interfaceHeight){
-            r1 = r2 = R;
+    protected void chengeR(int R1, int R2, boolean isCircle) {
+        if (super.getPointX() - R1 >= 0 && super.getPointX() + R1 <= interfaceWidth && super.getPointY() - R2 >= 0 && super.getPointY() + R2 <= interfaceHeight){
+            if (isCircle){ r1 = r2 = R1; }
+            else{ r1 = R1; r2 = R2; }
         } else {
-            r1 = r2 = 5;
+            if (isCircle){ r1 = r2 = 5; }
+            else{ r1 = 5; r2 = 7; }
         }
         repaint();
         System.out.println("Изменен радиус окружности: r = " + r1);
