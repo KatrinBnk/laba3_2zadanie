@@ -6,12 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="1f6ca1e3-586b-4179-a8c2-8e17b515faa6" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Circle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Circle.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Rectangle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Rectangle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Romb.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Romb.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Square.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Square.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TFigure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TFigure.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/info.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/info.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,12 +78,21 @@
       <option name="project" value="LOCAL" />
       <updated>1699880517757</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="may be okay (last)">
+      <option name="closed" value="true" />
+      <created>1699958493790</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1699958493790</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="version 1" />
     <MESSAGE value="may be okay" />
-    <option name="LAST_COMMIT_MESSAGE" value="may be okay" />
+    <MESSAGE value="may be okay (last)" />
+    <option name="LAST_COMMIT_MESSAGE" value="may be okay (last)" />
   </component>
 </project>

@@ -6,7 +6,7 @@ public class Main {
     private JFrame fNL = new JFrame("Лабораторная работа №5");
     private JPanel sP, cP = centrePanel();
     private JButton[] buttons;
-    private int interfaceWight = 1100, interfaceHight = 600, buttonKey = 0;
+    private int  buttonKey = 0;
 
     private JPanel circle = null; //buttonkey == 1
     private Circle[] circles = null; //buttonkey == 11
@@ -31,8 +31,7 @@ public class Main {
 
     private int a, b, c, d, e, f;
     private int[] moveTags = new int[25];
-    private int keyForMove, keyForPanelCheck = 0;
-    private boolean tagCreateContainer = true;
+    private int keyForMove;
     private int cntRoms = 10;
     private int keyForPanelCheckEllipse = 1, keyForPanelCheckSquare = 2;
 
@@ -192,7 +191,6 @@ public class Main {
         keyForPanelCheckSquare = 12;
     }
 
-
     private void createContainerResult(int countFigure, int tagFigure) {
         int tagFigureRandom;
         if (container == null){
@@ -235,7 +233,6 @@ public class Main {
         fNL.requestFocus();
 
     }
-
 
     private void deleteAll() {
         if (container != null) {
@@ -287,6 +284,50 @@ public class Main {
         fNL.setFocusable(true);
         fNL.requestFocus();
     }
+
+    private void MoveContainer (int dx, int dy) {
+        if (keyForMove == 0) {
+            if (container != null) {
+                for (int i = 0; i < 25; i++) {
+                    ((TFigure) container[i]).MoveTo(dx, dy);
+                    cP.add(container[i], BorderLayout.CENTER);
+                }
+                cP.revalidate();
+                cP.repaint();
+            } else {
+                JOptionPane.showMessageDialog(fNL, "Контейнер не создан");
+            }
+        } else if (keyForMove == 1) {
+            if (container != null) {
+                for (int i = 0; i < 25; i++) {
+                    if (container[i] instanceof Circle) {
+                        ((TFigure) container[i]).MoveTo(dx, dy);
+                        cP.add(container[i], BorderLayout.CENTER);
+                    }
+                }
+                cP.revalidate();
+                cP.repaint();
+            } else {
+                JOptionPane.showMessageDialog(fNL, "Контейнер не создан");
+            }
+        } else if (keyForMove == 2) {
+            if (container != null) {
+                for (int i = 0; i < 25; i++) {
+                    if (container[i] instanceof Square) {
+                        ((TFigure) container[i]).MoveTo(dx, dy);
+                        cP.add(container[i], BorderLayout.CENTER);
+                    }
+                }
+                cP.revalidate();
+                cP.repaint();
+            } else {
+                JOptionPane.showMessageDialog(fNL, "Контейнер не создан");
+            }
+        }
+        fNL.setFocusable(true);
+        fNL.requestFocus();
+    }
+
 
     //панель с кнопками при работе с массивом объектов
     private void arrayObjects() {
@@ -356,36 +397,36 @@ public class Main {
                 }
                 ellipses = null;
             }
-        } else if(buttonKey == 4){
+        } else if(buttonKey == 3){
             if(square != null){
                 cP.remove(square);
                 square = null;
             }
-        } else if (buttonKey == 14){
+        } else if (buttonKey == 13){
             if (squares != null){
                 for (int i=0; i<cntSquares; i++) {
                     cP.remove(squares[i]);
                 }
                 squares = null;
             }
-        } else if(buttonKey == 5){
+        } else if(buttonKey == 4){
             if(rectangle != null){
                 cP.remove(rectangle);
                 rectangle = null;
             }
-        } else if (buttonKey == 15){
+        } else if (buttonKey == 14){
             if (rectangles != null){
                 for (int i=0; i<cntRectangles; i++) {
                     cP.remove(rectangles[i]);
                 }
                 rectangles = null;
             }
-        } else if(buttonKey == 6){
+        } else if(buttonKey == 5){
             if(romb != null){
                 cP.remove(romb);
                 romb = null;
             }
-        } else if (buttonKey == 16){
+        } else if (buttonKey == 15){
             if (rombs != null){
                 for (int i=0; i<cntRoms; i++) {
                     cP.remove(rombs[i]);
@@ -429,13 +470,13 @@ public class Main {
                 }
                 cP.revalidate();
             } else{ System.out.println("Фигур данного типа нет на холсте."); }
-        } else if(buttonKey == 4){
+        } else if(buttonKey == 3){
             if(square != null){
                 visionSquare = !visionSquare;
                 ((Square) square).Show(visionSquare);
                 cP.revalidate(); cP.repaint();
             } else{ System.out.println("Фигур данного типа нет на холсте."); }
-        } else if (buttonKey == 14){
+        } else if (buttonKey == 13){
             if (squares != null){
                 visionSquares = !visionSquares;
                 for (int i=0; i<cntSquares; i++) {
@@ -444,13 +485,13 @@ public class Main {
                 }
                 cP.revalidate();
             } else{ System.out.println("Фигур данного типа нет на холсте."); }
-        } else if(buttonKey == 5){
+        } else if(buttonKey == 4){
             if(rectangle != null){
                 visionRectangle = !visionRectangle;
                 ((Rectangle) rectangle).Show(visionRectangle);
                 cP.revalidate(); cP.repaint();
             } else{ System.out.println("Фигур данного типа нет на холсте."); }
-        } else if (buttonKey == 15){
+        } else if (buttonKey == 14){
             if (rectangles != null){
                 visionRectangles = !visionRectangles;
                 for (int i=0; i<cntRectangles; i++) {
@@ -459,13 +500,13 @@ public class Main {
                 }
                 cP.revalidate();
             } else{ System.out.println("Фигур данного типа нет на холсте."); }
-        } else if(buttonKey == 6){
+        } else if(buttonKey == 5){
             if(romb != null){
                 visionRomb = !visionRomb;
                 ((Romb) romb).Show(visionRomb);
                 cP.revalidate(); cP.repaint();
             } else{ System.out.println("Фигур данного типа нет на холсте."); }
-        } else if (buttonKey == 16){
+        } else if (buttonKey == 15){
             if (rombs != null){
                 visionRombs = !visionRombs;
                 for (int i=0; i<cntRoms; i++) {
@@ -480,29 +521,29 @@ public class Main {
     private void changeSize() {
         int x = (int) (Math.random() * 50) - 10;
         int y = (int) (Math.random() * 50) - 10;
-        if (buttonKey == 5) {
+        if (buttonKey == 4) {
             if (rectangle != null) { ((Rectangle) rectangle).chSize(x, y, 2); }
             else { JOptionPane.showMessageDialog(fNL, "Прямоугольник не найден"); }
         }
-        else if (buttonKey == 15) {
+        else if (buttonKey == 14) {
             if (rectangles != null) {
                 for (int i = 0; i < cntRectangles; i++) { rectangles[i].chSize(x, y, 2); }
             } else { JOptionPane.showMessageDialog(fNL, "Массив прямоугольников не создан"); }
         }
-        else if (buttonKey == 4) {
+        else if (buttonKey == 3) {
             if (square != null) { ((Square) square).chSize(x, x, 1); }
             else { JOptionPane.showMessageDialog(fNL, "Прямоугольник не найден"); }
         }
-        else if (buttonKey == 14) {
+        else if (buttonKey == 13) {
             if (squares != null) {
                 for (int i = 0; i < cntSquares; i++) { squares[i].chSize(x, x, 1); }
             } else { JOptionPane.showMessageDialog(fNL, "Массив прямоугольников не создан"); }
         }
-        if (buttonKey == 6) {
+        if (buttonKey == 5) {
             if (romb != null) { ((Romb) romb).chSize(x, y, 3); }
             else { JOptionPane.showMessageDialog(fNL, "Ромб не найден"); }
         }
-        else if (buttonKey == 16) {
+        else if (buttonKey == 15) {
             if (rombs != null) {
                 for (int i = 0; i < cntRoms; i++) { rombs[i].chSize(x, y, 3); }
             } else { JOptionPane.showMessageDialog(fNL, "Массив ромбов не создан"); }
@@ -645,13 +686,6 @@ public class Main {
         } else{ createRandom(); }
     }
 
-    /*
-    Для создания фигуры возможен ручной и компьютерный ввод
-    Пример компьютерного ввода абсолютно для всех можно посмотреть в ЛР 1.1 и ЛР 2.1
-    В следующих лабораторных работах для экономии памяти будет оставлен ручной ввод
-    ТОЛЬКО ДЛЯ КРУГА и массива кругов, остающиеся фигуры будут создаваться при помощи случайных чисел
-    */
-
     private void create() {
         if (buttonKey == 1){
             if (circle == null){
@@ -750,13 +784,13 @@ public class Main {
                 }
             }
             else{ JOptionPane.showMessageDialog(fNL, "Массив овалов уже создан"); }
-        } else if (buttonKey == 4){
+        } else if (buttonKey == 3){
             if(square == null){
                 square = new Square(a, b, c);
                 cP.add(square, BorderLayout.CENTER);
             }
             else{ JOptionPane.showMessageDialog(fNL, "Квадрат уже нарисована"); }
-        } else if(buttonKey == 14){
+        } else if(buttonKey == 13){
             if(squares == null){
                 squares = new Square[cntSquares];
                 for (int i = 0; i < cntSquares; i++){
@@ -770,13 +804,13 @@ public class Main {
                 }
             }
             else{ JOptionPane.showMessageDialog(fNL, "Массив квадратов уже создан"); }
-        } else if (buttonKey == 5){
+        } else if (buttonKey == 4){
             if(rectangle == null){
                 rectangle = new Rectangle(a, b, c, e);
                 cP.add(rectangle, BorderLayout.CENTER);
             }
             else{ JOptionPane.showMessageDialog(fNL, "Прямоугольник уже нарисована"); }
-        } else if(buttonKey == 15){
+        } else if(buttonKey == 14){
             if(rectangles == null){
                 rectangles = new Rectangle[cntRectangles];
                 for (int i = 0; i < cntRectangles; i++){
@@ -791,13 +825,13 @@ public class Main {
                 }
             }
             else{ JOptionPane.showMessageDialog(fNL, "Массив прямоугольников уже создан"); }
-        } else if (buttonKey == 6){
+        } else if (buttonKey == 5){
             if(romb == null){
                 romb = new Romb(a, b, c, e);
                 cP.add(romb, BorderLayout.CENTER);
             }
             else{ JOptionPane.showMessageDialog(fNL, "Ромб уже нарисован"); }
-        } else if(buttonKey == 16){
+        } else if(buttonKey == 15){
             if(rombs == null){
                 rombs = new Romb[cntRoms];
                 for (int i = 0; i < cntRoms; i++){
@@ -816,50 +850,6 @@ public class Main {
         cP.validate();
         cP.repaint();
         cP.revalidate();
-    }
-
-
-    private void MoveContainer (int dx, int dy) {
-        if (keyForMove == 0) {
-            if (container != null) {
-                for (int i = 0; i < 25; i++) {
-                    ((TFigure) container[i]).MoveTo(dx, dy);
-                    cP.add(container[i], BorderLayout.CENTER);
-                }
-                cP.revalidate();
-                cP.repaint();
-            } else {
-                JOptionPane.showMessageDialog(fNL, "Контейнер не создан");
-            }
-        } else if (keyForMove == 1) {
-            if (container != null) {
-                for (int i = 0; i < 25; i++) {
-                    if (container[i] instanceof Circle) {
-                        ((TFigure) container[i]).MoveTo(dx, dy);
-                        cP.add(container[i], BorderLayout.CENTER);
-                    }
-                }
-                cP.revalidate();
-                cP.repaint();
-            } else {
-                JOptionPane.showMessageDialog(fNL, "Контейнер не создан");
-            }
-        } else if (keyForMove == 2) {
-            if (container != null) {
-                for (int i = 0; i < 25; i++) {
-                    if (container[i] instanceof Square) {
-                        ((TFigure) container[i]).MoveTo(dx, dy);
-                        cP.add(container[i], BorderLayout.CENTER);
-                    }
-                }
-                cP.revalidate();
-                cP.repaint();
-            } else {
-                JOptionPane.showMessageDialog(fNL, "Контейнер не создан");
-            }
-        }
-        fNL.setFocusable(true);
-        fNL.requestFocus();
     }
 
     public static void main (String[] argc) {
