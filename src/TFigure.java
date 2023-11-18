@@ -28,53 +28,41 @@ abstract class TFigure extends JPanel {
 
     protected void MoveTo(int dx, int dy){
         this.Show(false);
-        if(tagFigure == 0){
-            if(check(0,dx,dy) ){
-                point.setXY(x1 + dx, y1 + dy); x1 += dx; y1 += dy;
-                System.out.println("Точка перемещена на новые координаты: (" + x1 + "; " + y1+ ").");
-            } else if(check(0,-dx,-dy) ){
-                point.setXY(x1 - dx, y1 - dy); x1 -= dx; y1 -= dy;
-                System.out.println("Точка перемещена на новые координаты: (" + x1 + "; " + y1+ ").");
-            } else if(check(0,dx,-dy) ){
-                point.setXY(x1 + dx, y1 - dy); x1 += dx; y1 -= dy;
-                System.out.println("Точка перемещена на новые координаты: (" + x1 + "; " + y1+ ").");
-            } else if(check(0,-dx,dy) ){
-                point.setXY(x1 - dx, y1 + dy); x1 -= dx; y1 += dy;
-                System.out.println("Точка перемещена на новые координаты: (" + x1 + "; " + y1+ ").");
-            } else{ System.out.println("Перемещение не выполнено: выход за пределы холста."); }
-        } else if (tagFigure == 1) {
-            if(check(1,dx,dy)){
-                point.setXY(x1 + dx, y1 + dy); x1 += dx; y1 += dy;
-                System.out.println("Окружность перемещена на новые координаты: (" + x1 + "; " + y1 + ").");
-            } else if (check(1, -dx, -dy)) {
-                point.setXY(x1 - dx, y1 - dy); x1 -= dx; y1 -= dy;
-                System.out.println("Окружность перемещена на новые координаты: (" + x1 + "; " + y1 + ").");
-            } else if (check(1, dx, -dy)) {
-                point.setXY(x1 + dx, y1 - dy); x1 += dx; y1 -= dy;
-                System.out.println("Окружность перемещена на новые координаты: (" + x1 + "; " + y1 + ").");
-            } else if (check(1, -dx, dy)) {
-                point.setXY(x1 - dx, y1 + dy); x1 -= dx; y1 += dy;
-                System.out.println("Окружность перемещена на новые координаты: (" + x1 + "; " + y1 + ").");
-            } else { System.out.println("Перемещение не выполнено: выход за пределы холста."); }
+        if (tagFigure == 1) {
+            if(!check(1,dx,dy)){
+                do{
+                    dx = (int) (Math.random() * 100 - 50);
+                    dy = (int) (Math.random() * 100 - 50);
+                }while (!check(1, dx, dy));
+            }
+            point.setXY(x1 + dx, y1 + dy); x1 += dx; y1 += dy;
+            System.out.println("Окружность перемещена на новые координаты: (" + x1 + "; " + y1 + ").");
+        } else if (tagFigure == 2){
+            if(!check(2, dx, dy)){
+                do{
+                    dx = (int) (Math.random() * 100 - 50);
+                    dy = (int) (Math.random() * 100 - 50);
+                }while(!check(2, dx, dy));
+            }
+            point.setXY(x1 + dx, y1 + dy); x1 += dx; y1 += dy;
+            x2 += dx; y2 +=dy;
+            System.out.println("Линия перемещена на новые координаты: (" + x1 + ", " + y1 + "); (" + x2 + ", " + y2 + ")" );
         } else if (tagFigure == 4) {
-            if(check(4,dx,dy)){
-                point.setXY(x1 + dx, y1 + dy); x1 += dx; y1 += dy;
-                x2 += dx; y2 +=dy; x3 += dx; y3 += dy; x4 += dx; y4 +=dy;
-                System.out.println("Четырехугольник перемещен на новые координаты: (" + x1 + ", " + y1 + "); (" + x2 + ", " + y2 + ")" + "); (" + x3 + ", " + y3 + "); (" + x4 + ", " + y4 + ")" );
-            } else if (check(1, -dx, -dy)) {
-                point.setXY(x1 - dx, y1 - dy); x1 -= dx; y1 -= dy;
-                x2 -= dx; y2 -=dy; x3 -= dx; y3 -= dy; x4 -= dx; y4 -=dy;
-                System.out.println("Четырехугольник перемещен на новые координаты: (" + x1 + ", " + y1 + "); (" + x2 + ", " + y2 + ")" + "); (" + x3 + ", " + y3 + "); (" + x4 + ", " + y4 + ")" );
-            } else if (check(1, dx, -dy)) {
-                point.setXY(x1 + dx, y1 - dy); x1 += dx; y1 -= dy;
-                x2 += dx; y2 -=dy; x3 += dx; y3 -= dy; x4 += dx; y4 -=dy;
-                System.out.println("Четырехугольник перемещен на новые координаты: (" + x1 + ", " + y1 + "); (" + x2 + ", " + y2 + ")" + "); (" + x3 + ", " + y3 + "); (" + x4 + ", " + y4 + ")" );
-            } else if (check(1, -dx, dy)) {
-                point.setXY(x1 - dx, y1 + dy); x1 -= dx; y1 += dy;
-                x2 -= dx; y2 +=dy; x3 -= dx; y3 += dy; x4 -= dx; y4 +=dy;
-                System.out.println("Четырехугольник перемещен на новые координаты: (" + x1 + ", " + y1 + "); (" + x2 + ", " + y2 + ")" + "); (" + x3 + ", " + y3 + "); (" + x4 + ", " + y4 + ")" );
-            } else{ System.out.println("Перемещение не выполнено: выход за пределы холста."); }
-        } else { System.out.println("Перемещение не выполнено: передан неверный код фигуры."); }
+
+            if (!check(4, dx, dy)) {
+                do {
+                    dx = (int) (Math.random() * 100 - 50);
+                    dy = (int) (Math.random() * 100 - 50);
+                } while (!check(4, dx, dy));
+            }
+            point.setXY(x1 + dx, y1 + dy);
+            x1 += dx; y1 += dy;
+            x2 += dx; y2 += dy;
+            x3 += dx; y3 += dy;
+            x4 += dx; y4 += dy;
+            System.out.println("Четырехугольник перемещен на новые координаты: (" + x1 + ", " + y1 + "); (" + x2 + ", " + y2 + ")" + "); (" + x3 + ", " + y3 + "); (" + x4 + ", " + y4 + ")");
+
+        }
         this.Show(true);
     }
 
